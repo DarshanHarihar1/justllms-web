@@ -46,13 +46,13 @@ const FeatureCard = ({
     className="group relative"
   >
     <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-all duration-500 blur-xl`}></div>
-    <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 h-full hover:border-white/20 transition-all duration-500">
-      <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${gradient} mb-6`}>
+    <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 h-full hover:border-white/20 transition-all duration-500">
+      <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${gradient} mb-4 sm:mb-6`}>
         <Icon className="w-6 h-6 text-white" />
       </div>
-      <h3 className="text-xl font-bold text-white mb-4">{title}</h3>
-      <p className="text-gray-300 mb-6 leading-relaxed">{description}</p>
-      <div className="text-sm font-mono bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg inline-block text-green-400">
+      <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">{title}</h3>
+      <p className="text-gray-300 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{description}</p>
+      <div className="text-xs sm:text-sm font-mono bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg inline-block text-green-400">
         {metric}
       </div>
     </div>
@@ -74,7 +74,7 @@ const ProviderBadge = ({
     onClick={onClick}
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
-    className={`relative px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+    className={`relative px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base ${
       isActive 
         ? `${color} text-white shadow-2xl` 
         : 'bg-white/10 text-gray-300 hover:bg-white/20'
@@ -153,11 +153,11 @@ const StatCard = ({
     whileHover={{ scale: 1.05 }}
     className="text-center group cursor-pointer"
   >
-    <div className="inline-flex p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 mb-3 group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-all duration-300">
-      <Icon className="w-8 h-8 text-white" />
+    <div className="inline-flex p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 mb-2 sm:mb-3 group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-all duration-300">
+      <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
     </div>
-    <div className="text-3xl font-bold text-white mb-1">{value}</div>
-    <div className="text-gray-400 text-sm">{label}</div>
+    <div className="text-2xl sm:text-3xl font-bold text-white mb-1">{value}</div>
+    <div className="text-gray-400 text-xs sm:text-sm px-2">{label}</div>
   </motion.div>
 )
 
@@ -261,23 +261,23 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-4">
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6">
         <div className="max-w-6xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2 mb-8"
+            className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 sm:px-6 py-2 mb-6 sm:mb-8 text-center"
           >
-            <Zap className="w-4 h-4 text-yellow-400" />
-            <span className="text-sm font-semibold">Production-Ready Python Library</span>
+            <Zap className="w-4 h-4 text-yellow-400 flex-shrink-0" />
+            <span className="text-xs sm:text-sm font-semibold">Production-Ready Python Library</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-6xl md:text-8xl font-bold mb-8"
+            className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 sm:mb-8 px-2"
           >
             <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
               Just
@@ -291,16 +291,18 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto"
+            className="text-base sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-4xl mx-auto px-4 overflow-hidden"
           >
-            <TypewriterText text="git checkout -b feature/actually-working-llm-routing" />
+            <div className="break-all sm:break-normal font-mono text-sm sm:text-base md:text-xl">
+              <TypewriterText text="git checkout -b feature/actually-working-llm-routing" />
+            </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col md:flex-row gap-4 justify-center mb-16"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4"
           >
             <motion.a
               href="https://pypi.org/project/justllms/"
@@ -308,20 +310,20 @@ export default function Home() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold flex items-center gap-2 hover:shadow-2xl transition-all duration-300 justify-center"
+              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold flex items-center gap-2 hover:shadow-2xl transition-all duration-300 justify-center text-sm sm:text-base"
             >
-              <Download className="w-5 h-5" />
-              View on PyPI
-              <ArrowRight className="w-5 h-5" />
+              <Download className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+              <span className="whitespace-nowrap">View on PyPI</span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
             </motion.a>
             <Link href="/docs">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border border-white/20 backdrop-blur-sm rounded-full font-semibold flex items-center gap-2 hover:bg-white/10 transition-all duration-300 justify-center cursor-pointer"
+                className="px-6 sm:px-8 py-3 sm:py-4 border border-white/20 backdrop-blur-sm rounded-full font-semibold flex items-center gap-2 hover:bg-white/10 transition-all duration-300 justify-center cursor-pointer text-sm sm:text-base"
               >
-                <Book className="w-5 h-5" />
-                Documentation
+                <Book className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                <span className="whitespace-nowrap">Documentation</span>
               </motion.div>
             </Link>
             <motion.a
@@ -330,11 +332,11 @@ export default function Home() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 border border-white/20 backdrop-blur-sm rounded-full font-semibold flex items-center gap-2 hover:bg-white/10 transition-all duration-300 justify-center"
+              className="px-6 sm:px-8 py-3 sm:py-4 border border-white/20 backdrop-blur-sm rounded-full font-semibold flex items-center gap-2 hover:bg-white/10 transition-all duration-300 justify-center text-sm sm:text-base"
             >
-              <Github className="w-5 h-5" />
-              View on GitHub
-              <Star className="w-4 h-4" />
+              <Github className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+              <span className="whitespace-nowrap">View on GitHub</span>
+              <Star className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
             </motion.a>
           </motion.div>
 
@@ -342,7 +344,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 px-4"
           >
             <StatCard value="60%" label="Cost Reduction" icon={TrendingUp} />
             <StatCard value="6+" label="LLM Providers" icon={Layers} />
@@ -368,19 +370,19 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4">
+      <section className="py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 px-2">
               Why <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">JustLLMs</span>?
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
               Managing multiple LLM providers is complex. JustLLMs solves these challenges with intelligent routing that optimizes for cost, speed and quality.
             </p>
           </motion.div>
@@ -399,7 +401,7 @@ export default function Home() {
               <p className="text-gray-400">Connect to all major LLM providers with a single interface</p>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 px-4">
               {providers.map((provider, index) => (
                 <ProviderBadge
                   key={provider.name}
@@ -424,7 +426,7 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 px-4">
             <FeatureCard
               icon={Brain}
               title="Intelligent Routing"
@@ -493,13 +495,13 @@ export default function Home() {
                       <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                       <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     </div>
-                    <span className="text-white font-semibold">💖 JustLLMs</span>
+                    <span className="text-white font-semibold">JustLLMs</span>
                   </div>
                   <span className="text-gray-400 text-sm">Quick Start Demo</span>
                 </div>
                 
-                <div className="p-6 bg-gray-950/60">
-                  <pre className="text-sm leading-relaxed font-mono">
+                <div className="p-4 sm:p-6 bg-gray-950/60 overflow-x-auto code-scroll">
+                  <pre className="text-xs sm:text-sm leading-relaxed font-mono whitespace-pre min-w-max">
                     <code>
                       <span className="text-pink-400">from</span> <span className="text-blue-300">justllms</span> <span className="text-pink-400">import</span> <span className="text-blue-300">JustLLM</span>
                       {"\n\n"}

@@ -182,16 +182,16 @@ export default function DocsPage() {
   }) => (
     <div className="relative bg-gray-950/80 backdrop-blur-xl border border-gray-800/50 rounded-xl overflow-hidden mb-6">
       <div className="flex items-center justify-between p-3 border-b border-gray-800/50 bg-gray-900/50">
-        <div>
+        <div className="min-w-0 flex-1 pr-2">
           <span className="text-white font-medium text-sm">{title}</span>
           {description && <p className="text-gray-400 text-xs mt-1">{description}</p>}
         </div>
-        <span className="text-xs px-2 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full">
+        <span className="text-xs px-2 py-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full flex-shrink-0">
           {language}
         </span>
       </div>
-      <div className="p-4 overflow-x-auto">
-        <pre className="text-sm font-mono leading-relaxed">
+      <div className="p-3 sm:p-4 overflow-x-auto code-scroll">
+        <pre className="text-xs sm:text-sm font-mono leading-relaxed whitespace-pre min-w-max">
           <code>
             <SyntaxHighlighter code={code} />
           </code>
@@ -210,33 +210,33 @@ export default function DocsPage() {
 
       {/* Navigation Header */}
       <header className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-xl border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-3 sm:space-x-6">
               <Link href="/" className="flex items-center space-x-2 text-white hover:text-blue-400 transition-colors">
-                <Home className="w-5 h-5" />
-                <span className="font-semibold">JustLLMs</span>
+                <Home className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="font-semibold text-sm sm:text-base">JustLLMs</span>
               </Link>
-              <ChevronRight className="w-4 h-4 text-gray-400" />
-              <span className="text-gray-300">Documentation</span>
+              <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400" />
+              <span className="text-gray-300 text-sm sm:text-base">Documentation</span>
             </div>
             <a
               href="https://github.com/just-llms/justllms"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition-all duration-200"
+              className="flex items-center space-x-2 px-3 sm:px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg transition-all duration-200"
             >
               <Github className="w-4 h-4" />
-              <span className="text-sm">GitHub</span>
+              <span className="text-sm hidden sm:inline">GitHub</span>
             </a>
           </div>
         </div>
       </header>
 
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-4 gap-8">
-          {/* Table of Contents */}
-          <div className="lg:col-span-1">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+        <div className="lg:grid lg:grid-cols-4 lg:gap-8">
+          {/* Table of Contents - Hidden on mobile */}
+          <div className="hidden lg:block lg:col-span-1">
             <div className="sticky top-8">
               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
                 <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
@@ -264,34 +264,60 @@ export default function DocsPage() {
           </div>
 
           {/* Main Content */}
-          <div className="lg:col-span-3">
+          <div className="w-full lg:col-span-3">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-16"
+              className="space-y-12 sm:space-y-16"
             >
               {/* Hero */}
-              <div className="text-center mb-16">
-                <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              <div className="text-center mb-12 sm:mb-16 px-4">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
                   <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
                     Just
                   </span>
                   <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                     LLMs
                   </span>{' '}
-                  Documentation
+                  <span className="block sm:inline mt-1 sm:mt-0">Documentation</span>
                 </h1>
-                <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                <p className="text-base sm:text-xl text-gray-300 max-w-3xl mx-auto px-2">
                   Complete guide to building production-ready LLM applications with intelligent routing, 
                   enterprise analytics, and multi-provider management.
                 </p>
               </div>
 
+              {/* Mobile Table of Contents */}
+              <div className="lg:hidden mb-8">
+                <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4">
+                  <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                    <Book className="w-5 h-5" />
+                    Quick Navigation
+                  </h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {sections.map(({ id, title, icon: Icon }) => (
+                      <button
+                        key={id}
+                        onClick={() => scrollToSection(id)}
+                        className={`text-left flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 text-xs ${
+                          activeSection === id
+                            ? 'bg-blue-500/20 text-blue-400'
+                            : 'text-gray-300 hover:text-white hover:bg-white/5'
+                        }`}
+                      >
+                        <Icon className="w-3 h-3 flex-shrink-0" />
+                        <span className="truncate">{title}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               {/* Installation */}
               <section id="installation" className="scroll-mt-24">
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Download className="w-8 h-8 text-blue-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3">
+                  <Download className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" />
                   Installation
                 </h2>
                 <p className="text-gray-300 mb-6 text-lg">
@@ -340,8 +366,8 @@ export default function DocsPage() {
 
               {/* Quick Start */}
               <section id="quick-start" className="scroll-mt-24">
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Zap className="w-8 h-8 text-yellow-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3">
+                  <Zap className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-400" />
                   Quick Start
                 </h2>
                 <p className="text-gray-300 mb-6 text-lg">
@@ -382,8 +408,8 @@ print(f"Cost: \${response.cost:.4f}")`}
 
               {/* Multi-Provider Support */}
               <section id="multi-provider" className="scroll-mt-24">
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Settings className="w-8 h-8 text-purple-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3">
+                  <Settings className="w-6 h-6 sm:w-8 sm:h-8 text-purple-400" />
                   Multi-Provider Support
                 </h2>
                 <p className="text-gray-300 mb-6 text-lg">
@@ -430,8 +456,8 @@ client = JustLLM({
 
               {/* RAG Integration */}
               <section id="rag" className="scroll-mt-24">
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Search className="w-8 h-8 text-emerald-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3">
+                  <Search className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-400" />
                   RAG Integration
                 </h2>
                 <p className="text-gray-300 mb-6 text-lg">
@@ -496,8 +522,8 @@ for source in response.sources:
 
               {/* Intelligent Routing */}
               <section id="intelligent-routing" className="scroll-mt-24">
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Brain className="w-8 h-8 text-pink-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3">
+                  <Brain className="w-6 h-6 sm:w-8 sm:h-8 text-pink-400" />
                   Intelligent Routing
                 </h2>
                 <p className="text-gray-300 mb-6 text-lg">
@@ -556,8 +582,8 @@ for source in response.sources:
 
               {/* Real-time Streaming */}
               <section id="streaming" className="scroll-mt-24">
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Code className="w-8 h-8 text-green-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3">
+                  <Code className="w-6 h-6 sm:w-8 sm:h-8 text-green-400" />
                   Real-time Streaming
                 </h2>
                 <p className="text-gray-300 mb-6 text-lg">
@@ -613,8 +639,8 @@ except StreamingError as e:
 
               {/* Conversation Management */}
               <section id="conversation" className="scroll-mt-24">
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <MessageSquare className="w-8 h-8 text-blue-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3">
+                  <MessageSquare className="w-6 h-6 sm:w-8 sm:h-8 text-blue-400" />
                   Conversation Management
                 </h2>
                 <p className="text-gray-300 mb-6 text-lg">
@@ -662,8 +688,8 @@ with open("chat_history.md", "w") as f:
 
               {/* Smart Caching */}
               <section id="caching" className="scroll-mt-24">
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Database className="w-8 h-8 text-cyan-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3">
+                  <Database className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-400" />
                   Smart Caching
                 </h2>
                 <p className="text-gray-300 mb-6 text-lg">
@@ -714,8 +740,8 @@ with open("chat_history.md", "w") as f:
 
               {/* Enterprise Analytics */}
               <section id="analytics" className="scroll-mt-24">
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <BarChart3 className="w-8 h-8 text-orange-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3">
+                  <BarChart3 className="w-6 h-6 sm:w-8 sm:h-8 text-orange-400" />
                   Enterprise Analytics
                 </h2>
                 <p className="text-gray-300 mb-6 text-lg">
@@ -781,8 +807,8 @@ print(f"Average response time: {metrics.avg_response_time:.2f}s")`}
 
               {/* Business Rules & Validation */}
               <section id="validation" className="scroll-mt-24">
-                <h2 className="text-3xl font-bold mb-6 flex items-center gap-3">
-                  <Shield className="w-8 h-8 text-red-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 flex items-center gap-3">
+                  <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-red-400" />
                   Business Rules & Validation
                 </h2>
                 <p className="text-gray-300 mb-6 text-lg">

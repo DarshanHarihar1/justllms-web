@@ -84,6 +84,29 @@
   @apply bg-muted/50 border border-border rounded-lg p-4 font-mono text-sm;
 }
 
+/* Enhanced horizontal scrollbar for code blocks */
+.code-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.code-scroll::-webkit-scrollbar-track {
+  @apply bg-gray-800/30 rounded-full;
+}
+
+.code-scroll::-webkit-scrollbar-thumb {
+  @apply bg-gray-600/60 rounded-full;
+}
+
+.code-scroll::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500/80;
+}
+
+/* For Firefox */
+.code-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(75, 85, 99, 0.6) rgba(31, 41, 55, 0.3);
+}
+
 /* Glowing effects */
 .glow {
   box-shadow: 0 0 20px rgba(238, 119, 82, 0.3);
