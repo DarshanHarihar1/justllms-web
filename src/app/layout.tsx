@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   publisher: 'JustLLMs',
   robots: 'index, follow',
   verification: {
-    google: 'googlee9feb6a99e3a74e7',
+    google: 'P3p1NvH2w2zDYjosaO9T4HzKyql14j1UFzfzSuScUos',
   },
   openGraph: {
     title: 'JustLLMs - Production-Ready Python Library for Multiple LLM Providers',
