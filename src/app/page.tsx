@@ -46,13 +46,13 @@ const FeatureCard = ({
     className="group relative"
   >
     <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-10 rounded-2xl transition-all duration-500 blur-xl`}></div>
-    <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 sm:p-8 h-full hover:border-white/20 transition-all duration-500">
+    <div className="relative bg-white/[0.02] backdrop-blur-md border border-white/[0.06] rounded-2xl p-6 sm:p-8 h-full hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-500">
       <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${gradient} mb-4 sm:mb-6`}>
         <Icon className="w-6 h-6 text-white" />
       </div>
-      <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">{title}</h3>
-      <p className="text-gray-300 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">{description}</p>
-      <div className="text-xs sm:text-sm font-mono bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg inline-block text-green-400">
+      <h3 className="text-lg sm:text-xl font-semibold text-white mb-4 tracking-tight">{title}</h3>
+      <p className="text-gray-300 mb-5 sm:mb-6 leading-relaxed text-sm sm:text-base">{description}</p>
+      <div className="text-xs sm:text-sm font-mono bg-white/[0.06] backdrop-blur-sm px-3 sm:px-4 py-2 rounded-lg inline-block text-emerald-400">
         {metric}
       </div>
     </div>
@@ -153,10 +153,10 @@ const StatCard = ({
     whileHover={{ scale: 1.05 }}
     className="text-center group cursor-pointer"
   >
-    <div className="inline-flex p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 mb-2 sm:mb-3 group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-all duration-300">
+    <div className="inline-flex p-3 sm:p-4 rounded-xl bg-gradient-to-br from-blue-500/[0.12] to-purple-500/[0.12] mb-3 group-hover:from-blue-500/20 group-hover:to-purple-500/20 transition-all duration-300">
       <Icon className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
     </div>
-    <div className="text-2xl sm:text-3xl font-bold text-white mb-1">{value}</div>
+    <div className="text-2xl sm:text-3xl font-semibold text-white mb-2">{value}</div>
     <div className="text-gray-400 text-xs sm:text-sm px-2">{label}</div>
   </motion.div>
 )
@@ -198,64 +198,147 @@ export default function Home() {
 
   return (
     <main className="min-h-screen text-white overflow-x-hidden relative">
-      {/* Dynamic Gradient Background */}
+      {/* Sophisticated Dark Background */}
       <div className="fixed inset-0 -z-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-900 to-black"></div>
-        <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/10 via-transparent to-purple-900/10"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.05),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/20 via-transparent to-purple-900/20"></div>
       </div>
 
-      {/* Animated Mesh Background */}
+      {/* Enhanced Aesthetic Elements */}
       <div className="fixed inset-0 -z-10">
+        {/* Left side decorative elements */}
         <motion.div
           animate={{
-            x: [0, 100, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.1, 1],
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-20 -left-40 w-96 h-96 rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%)'
+          }}
+        />
+        
+        {/* Left side floating orbs */}
+        <motion.div
+          animate={{
+            y: [0, -40, 0],
+            x: [0, 20, 0],
+            rotate: [0, 180, 360],
           }}
           transition={{
             duration: 20,
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-500/8 to-purple-500/8 rounded-full blur-3xl"
+          className="absolute top-1/2 -left-10 w-24 h-24 rounded-full"
+          style={{
+            background: 'conic-gradient(from 0deg, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.1), rgba(59, 130, 246, 0.1))'
+          }}
+        />
+        
+        {/* Left side accent lines */}
+        <motion.div
+          animate={{
+            opacity: [0.2, 0.6, 0.2],
+            scaleY: [1, 1.5, 1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/4 left-4 w-0.5 h-32 bg-gradient-to-b from-blue-400/20 to-transparent rounded-full"
+        />
+        
+        {/* Right side decorative elements */}
+        <motion.div
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-20 -right-40 w-80 h-80 rounded-full blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(168, 85, 247, 0.15), transparent 70%)'
+          }}
+        />
+        
+        {/* Right side floating orbs */}
+        <motion.div
+          animate={{
+            y: [0, 30, 0],
+            x: [0, -15, 0],
+            rotate: [360, 180, 0],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/3 -right-8 w-20 h-20 rounded-full"
+          style={{
+            background: 'conic-gradient(from 180deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1), rgba(168, 85, 247, 0.1))'
+          }}
+        />
+        
+        {/* Right side accent lines */}
+        <motion.div
+          animate={{
+            opacity: [0.2, 0.6, 0.2],
+            scaleY: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+          className="absolute top-2/3 right-4 w-0.5 h-24 bg-gradient-to-b from-purple-400/20 to-transparent rounded-full"
+        />
+        
+        {/* Floating particles */}
+        <motion.div
+          animate={{
+            y: [0, -100, 0],
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-1/4 left-1/4 w-1 h-1 rounded-full bg-blue-400/50"
         />
         
         <motion.div
           animate={{
-            x: [0, -80, 0],
-            y: [0, 60, 0],
-            scale: [1.1, 1, 1.1],
+            y: [0, -80, 0],
+            opacity: [0, 1, 0],
           }}
           transition={{
-            duration: 25,
+            duration: 12,
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
+            delay: 3
           }}
-          className="absolute top-60 right-20 w-96 h-96 bg-gradient-to-r from-purple-500/6 to-pink-500/6 rounded-full blur-3xl"
+          className="absolute bottom-1/3 right-1/4 w-1 h-1 rounded-full bg-purple-400/50"
         />
-
-        <motion.div
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          className="absolute bottom-40 left-1/3 w-80 h-80 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 rounded-full blur-3xl"
-        />
-
-        <div className="absolute inset-0 opacity-[0.03]">
+        
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.015]">
           <div className="h-full w-full" style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px'
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                            linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
+            backgroundSize: '80px 80px'
           }}></div>
         </div>
       </div>
@@ -267,22 +350,22 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 sm:px-6 py-2 mb-6 sm:mb-8 text-center"
+            className="inline-flex items-center space-x-2 bg-white/[0.08] backdrop-blur-md border border-white/[0.12] rounded-full px-4 sm:px-6 py-2.5 mb-8 sm:mb-10 text-center hover:bg-white/[0.12] transition-all duration-300"
           >
             <Zap className="w-4 h-4 text-yellow-400 flex-shrink-0" />
-            <span className="text-xs sm:text-sm font-semibold">Production-Ready Python Library</span>
+            <span className="text-sm font-medium text-gray-200">Production-Ready Python Library</span>
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 sm:mb-8 px-2"
+            className="text-5xl sm:text-6xl md:text-7xl font-semibold mb-6 sm:mb-8 px-2 tracking-tight"
           >
-            <span className="bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
               Just
             </span>
-            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               LLMs
             </span>
           </motion.h1>
@@ -291,52 +374,113 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 max-w-4xl mx-auto px-4 overflow-hidden"
+            className="mb-12 sm:mb-16 max-w-4xl mx-auto px-4"
           >
-            <div className="break-all sm:break-normal font-mono text-sm sm:text-base md:text-xl">
-              <TypewriterText text="git checkout -b feature/actually-working-llm-routing" />
+            <div className="relative group">
+              {/* Terminal window */}
+              <div className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-xl border border-white/[0.08] shadow-2xl overflow-hidden">
+                {/* Terminal header */}
+                <div className="flex items-center justify-between px-4 py-3 bg-gray-900/50 border-b border-white/[0.06]">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-3 h-3 bg-red-500/80 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-500/80 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-500/80 rounded-full"></div>
+                  </div>
+                  <div className="text-xs text-gray-500 font-mono">~/justllms</div>
+                  <div className="text-xs text-gray-500">bash</div>
+                </div>
+                
+                {/* Terminal content */}
+                <div className="p-4 sm:p-6">
+                  <div className="flex items-start space-x-3">
+                    <span className="text-green-400 text-sm sm:text-base">$</span>
+                    <div className="flex-1 font-mono text-sm sm:text-base md:text-lg text-gray-300">
+                      <TypewriterText text="git checkout -b feature/actually-working-llm-routing" speed={30} />
+                    </div>
+                  </div>
+                  
+                  {/* Optional: Add a response line */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 3 }}
+                    className="mt-3 text-xs sm:text-sm text-gray-500 font-mono"
+                  >
+                    Switched to a new branch 'feature/actually-working-llm-routing'
+                  </motion.div>
+                </div>
+              </div>
+              
+              {/* Decorative elements */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-xl blur-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
             </div>
+            
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="text-center mt-6 text-sm text-gray-400"
+            >
+              <span className="inline-block px-3 py-1 bg-white/[0.05] rounded-full border border-white/[0.08]">
+                🚀 Ship faster with intelligent LLM routing
+              </span>
+            </motion.p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 sm:mb-16 px-4"
+            className="flex flex-col sm:flex-row gap-3 justify-center mb-16 sm:mb-20 px-4 max-w-4xl mx-auto"
           >
+            {/* PyPI Button */}
             <motion.a
               href="https://pypi.org/project/justllms/"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(59, 130, 246, 0.3)" }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold flex items-center gap-2 hover:shadow-2xl transition-all duration-300 justify-center text-sm sm:text-base"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative"
             >
-              <Download className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-              <span className="whitespace-nowrap">View on PyPI</span>
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl blur-lg opacity-50 group-hover:opacity-70 transition-opacity"></div>
+              <div className="relative bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl px-6 py-3.5 flex items-center justify-center gap-2.5">
+                <Download className="w-5 h-5 text-white" />
+                <span className="text-white font-semibold">View on PyPI</span>
+                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
+              </div>
             </motion.a>
+
+            {/* Documentation Button */}
             <Link href="/docs">
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 sm:px-8 py-3 sm:py-4 border border-white/20 backdrop-blur-sm rounded-full font-semibold flex items-center gap-2 hover:bg-white/10 transition-all duration-300 justify-center cursor-pointer text-sm sm:text-base"
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="group relative cursor-pointer"
               >
-                <Book className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                <span className="whitespace-nowrap">Documentation</span>
+                <div className="absolute inset-0 bg-white/[0.06] rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="relative bg-white/[0.06] backdrop-blur-sm border border-white/[0.12] rounded-xl px-6 py-3.5 flex items-center justify-center gap-2.5 group-hover:bg-white/[0.08] group-hover:border-white/[0.2] transition-all">
+                  <Book className="w-5 h-5 text-white" />
+                  <span className="text-white font-semibold">Documentation</span>
+                </div>
               </motion.div>
             </Link>
+
+            {/* GitHub Button */}
             <motion.a
               href="https://github.com/just-llms/justllms"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 sm:px-8 py-3 sm:py-4 border border-white/20 backdrop-blur-sm rounded-full font-semibold flex items-center gap-2 hover:bg-white/10 transition-all duration-300 justify-center text-sm sm:text-base"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative"
             >
-              <Github className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-              <span className="whitespace-nowrap">View on GitHub</span>
-              <Star className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+              <div className="absolute inset-0 bg-white/[0.06] rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="relative bg-white/[0.06] backdrop-blur-sm border border-white/[0.12] rounded-xl px-6 py-3.5 flex items-center justify-center gap-2.5 group-hover:bg-white/[0.08] group-hover:border-white/[0.2] transition-all">
+                <Github className="w-5 h-5 text-white" />
+                <span className="text-white font-semibold">View on GitHub</span>
+                <Star className="w-4 h-4 text-white/60" />
+              </div>
             </motion.a>
           </motion.div>
 
@@ -344,29 +488,118 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 px-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 px-4 max-w-6xl mx-auto"
           >
-            <StatCard value="60%" label="Cost Reduction" icon={TrendingUp} />
-            <StatCard value="6+" label="LLM Providers" icon={Layers} />
-            <StatCard value="1.1MB" label="Package Size" icon={Download} />
-            <StatCard value="11K" label="Lines of Code" icon={Code} />
+            <motion.div 
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="relative group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+              <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-green-500/20 rounded-2xl p-6 hover:border-green-400/40 transition-all duration-300">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-2 bg-gradient-to-br from-green-500/10 to-emerald-500/10 rounded-lg">
+                    <TrendingUp className="w-5 h-5 text-green-400" />
+                  </div>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: '60%' }}
+                    transition={{ duration: 1.5, delay: 1 }}
+                    className="h-1 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full"
+                  />
+                </div>
+                <div className="text-3xl font-bold text-white mb-1">60%</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">Cost Reduction</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="relative group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+              <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-6 hover:border-blue-400/40 transition-all duration-300">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-2 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-lg">
+                    <Layers className="w-5 h-5 text-blue-400" />
+                  </div>
+                  <div className="flex space-x-1">
+                    {[...Array(6)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.3, delay: 1 + i * 0.1 }}
+                        className="w-1.5 h-1.5 bg-blue-400 rounded-full"
+                      />
+                    ))}
+                  </div>
+                </div>
+                <div className="text-3xl font-bold text-white mb-1">6+</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">LLM Providers</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="relative group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+              <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-purple-500/20 rounded-2xl p-6 hover:border-purple-400/40 transition-all duration-300">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-2 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-lg">
+                    <Download className="w-5 h-5 text-purple-400" />
+                  </div>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="w-8 h-8"
+                  >
+                    <svg viewBox="0 0 32 32" className="w-full h-full">
+                      <circle cx="16" cy="16" r="14" stroke="rgba(168, 85, 247, 0.2)" strokeWidth="2" fill="none" />
+                      <circle cx="16" cy="16" r="14" stroke="url(#purple-gradient)" strokeWidth="2" fill="none" strokeDasharray="20 100" strokeLinecap="round" />
+                      <defs>
+                        <linearGradient id="purple-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#a855f7" />
+                          <stop offset="100%" stopColor="#ec4899" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </motion.div>
+                </div>
+                <div className="text-3xl font-bold text-white mb-1">1.1MB</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">Package Size</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="relative group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+              <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-orange-500/20 rounded-2xl p-6 hover:border-orange-400/40 transition-all duration-300">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-2 bg-gradient-to-br from-orange-500/10 to-red-500/10 rounded-lg">
+                    <Code className="w-5 h-5 text-orange-400" />
+                  </div>
+                  <motion.div className="flex items-center space-x-0.5">
+                    {[...Array(4)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ height: 0 }}
+                        animate={{ height: [8, 16, 12, 20][i] }}
+                        transition={{ duration: 0.5, delay: 1 + i * 0.1 }}
+                        className="w-1 bg-gradient-to-t from-orange-400 to-red-400 rounded-full"
+                      />
+                    ))}
+                  </motion.div>
+                </div>
+                <div className="text-3xl font-bold text-white mb-1">11K</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">Lines of Code</div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
-          >
-            <div className="w-1 h-3 bg-white/30 rounded-full mt-2"></div>
-          </motion.div>
-        </motion.div>
       </section>
 
       {/* Features Section */}
@@ -379,11 +612,11 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 px-2">
-              Why <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">JustLLMs</span>?
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-6 sm:mb-8 px-2 tracking-tight text-white">
+              Why <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">JustLLMs</span>?
             </h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4">
-              Managing multiple LLM providers is complex. JustLLMs solves these challenges with intelligent routing that optimizes for cost, speed and quality.
+            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto px-4 leading-relaxed">
+              Managing multiple LLM providers is complex. JustLLMs is the superior alternative to LangChain and LiteLLM, offering better cost optimization, enterprise features, and intelligent routing across all major AI providers.
             </p>
           </motion.div>
 
@@ -395,10 +628,10 @@ export default function Home() {
             className="mb-20"
           >
             <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold mb-4">
+              <h3 className="text-2xl sm:text-3xl font-semibold mb-6 tracking-tight">
                 Multi-Provider <span className="bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">Network</span>
               </h3>
-              <p className="text-gray-400">Connect to all major LLM providers with a single interface</p>
+              <p className="text-gray-300 leading-relaxed">Connect to all major LLM providers with a single interface</p>
             </div>
             
             <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 px-4">
@@ -420,7 +653,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-center"
             >
-              <p className="text-lg text-gray-300">
+              <p className="text-lg text-gray-300 leading-relaxed">
                 Now featuring: <span className="text-blue-400 font-semibold">{features[currentFeature]}</span>
               </p>
             </motion.div>
@@ -457,6 +690,173 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Comparison Section */}
+      <section className="py-16 sm:py-20 px-4 bg-gray-900/30">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 sm:mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-6 tracking-tight text-white">
+              Why Choose JustLLMs Over <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">Alternatives</span>?
+            </h2>
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Unlike LangChain and LiteLLM, JustLLMs is purpose-built for enterprise production environments with superior cost optimization and intelligent routing.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {/* JustLLMs */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-green-500/20 to-emerald-500/20 rounded-2xl blur-xl"></div>
+              <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border-2 border-green-500/30 rounded-2xl p-6">
+                <div className="text-center mb-4">
+                  <div className="inline-flex px-3 py-1 bg-green-500/20 rounded-full mb-3">
+                    <span className="text-green-400 font-semibold text-sm">RECOMMENDED</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white">JustLLMs</h3>
+                </div>
+                <ul className="space-y-3 text-sm">
+                  <li className="flex items-center text-gray-300">
+                    <CheckCircle className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
+                    60% cost reduction with intelligent routing
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <CheckCircle className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
+                    Enterprise analytics & usage tracking
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <CheckCircle className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
+                    Built-in RAG with vector search
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <CheckCircle className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
+                    Production-ready reliability
+                  </li>
+                  <li className="flex items-center text-gray-300">
+                    <CheckCircle className="w-4 h-4 text-green-400 mr-3 flex-shrink-0" />
+                    Lightweight (1.1MB package)
+                  </li>
+                </ul>
+              </div>
+            </motion.div>
+
+            {/* LangChain */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] rounded-2xl p-6"
+            >
+              <div className="text-center mb-4">
+                <h3 className="text-xl font-bold text-white">LangChain</h3>
+                <p className="text-gray-400 text-sm">Framework Heavy</p>
+              </div>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-center text-gray-400">
+                  <span className="w-4 h-4 bg-red-500/20 rounded-full mr-3 flex-shrink-0 flex items-center justify-center">
+                    <span className="w-2 h-2 bg-red-400 rounded-full"></span>
+                  </span>
+                  Complex setup and learning curve
+                </li>
+                <li className="flex items-center text-gray-400">
+                  <span className="w-4 h-4 bg-red-500/20 rounded-full mr-3 flex-shrink-0 flex items-center justify-center">
+                    <span className="w-2 h-2 bg-red-400 rounded-full"></span>
+                  </span>
+                  No built-in cost optimization
+                </li>
+                <li className="flex items-center text-gray-400">
+                  <span className="w-4 h-4 bg-red-500/20 rounded-full mr-3 flex-shrink-0 flex items-center justify-center">
+                    <span className="w-2 h-2 bg-red-400 rounded-full"></span>
+                  </span>
+                  Heavy dependencies (100MB+)
+                </li>
+                <li className="flex items-center text-gray-400">
+                  <span className="w-4 h-4 bg-red-500/20 rounded-full mr-3 flex-shrink-0 flex items-center justify-center">
+                    <span className="w-2 h-2 bg-red-400 rounded-full"></span>
+                  </span>
+                  Limited enterprise features
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* LiteLLM */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="bg-white/[0.06] backdrop-blur-sm border border-white/[0.1] rounded-2xl p-6"
+            >
+              <div className="text-center mb-4">
+                <h3 className="text-xl font-bold text-white">LiteLLM</h3>
+                <p className="text-gray-400 text-sm">Basic Proxy</p>
+              </div>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-center text-gray-400">
+                  <span className="w-4 h-4 bg-red-500/20 rounded-full mr-3 flex-shrink-0 flex items-center justify-center">
+                    <span className="w-2 h-2 bg-red-400 rounded-full"></span>
+                  </span>
+                  Basic routing without intelligence
+                </li>
+                <li className="flex items-center text-gray-400">
+                  <span className="w-4 h-4 bg-red-500/20 rounded-full mr-3 flex-shrink-0 flex items-center justify-center">
+                    <span className="w-2 h-2 bg-red-400 rounded-full"></span>
+                  </span>
+                  Limited analytics capabilities
+                </li>
+                <li className="flex items-center text-gray-400">
+                  <span className="w-4 h-4 bg-red-500/20 rounded-full mr-3 flex-shrink-0 flex items-center justify-center">
+                    <span className="w-2 h-2 bg-red-400 rounded-full"></span>
+                  </span>
+                  No RAG or vector search
+                </li>
+                <li className="flex items-center text-gray-400">
+                  <span className="w-4 h-4 bg-red-500/20 rounded-full mr-3 flex-shrink-0 flex items-center justify-center">
+                    <span className="w-2 h-2 bg-red-400 rounded-full"></span>
+                  </span>
+                  Less enterprise-ready
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <p className="text-gray-400 mb-6">
+              Join thousands of developers who switched from LangChain and LiteLLM to JustLLMs
+            </p>
+            <motion.a
+              href="https://pypi.org/project/justllms/"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
+            >
+              <Download className="w-5 h-5" />
+              Try JustLLMs Today
+              <ArrowRight className="w-4 h-4" />
+            </motion.a>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Code Examples */}
       <section className="py-20 px-4 bg-gray-900/20">
         <div className="max-w-7xl mx-auto">
@@ -467,10 +867,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl md:text-4xl font-semibold mb-8 tracking-tight">
               Simple to Start, <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Powerful</span> to Scale
             </h2>
-            <p className="text-xl text-gray-300 mb-4">
+            <p className="text-lg text-gray-300 mb-6 leading-relaxed">
               Get started in minutes with our intuitive API
             </p>
             <div className="inline-flex items-center space-x-2 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg px-4 py-2">
@@ -558,10 +958,10 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-8 tracking-tight">
               Stop being the human <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">load balancer</span> for your LLM requests
             </h2>
-            <p className="text-gray-300 mb-8 max-w-2xl mx-auto text-lg">
+            <p className="text-gray-300 mb-10 max-w-2xl mx-auto text-lg leading-relaxed">
               Built by developers who got tired of the same problems you're facing right now.
             </p>
             
